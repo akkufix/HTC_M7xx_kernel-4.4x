@@ -297,7 +297,7 @@ config EXFAT_VERSION
 	default "target/htc.d/htc"
 
 config ASYNC_FSYNC
-	bool
+	string
 	string "asynchronous fsync"
 	default n
 
