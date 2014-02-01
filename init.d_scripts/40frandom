@@ -1,0 +1,6 @@
+#!/system/bin/sh
+# frandom at boot 
+
+ln /dev/frandom /dev/random
+ln /dev/erandom /dev/urandom
+
