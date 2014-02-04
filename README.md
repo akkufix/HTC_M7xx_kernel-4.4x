@@ -7,7 +7,7 @@ git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/
 
 Set paths and build-env. (Linux):
 
-export PATH=/<your-path-to>/arm-eabi-4.6/bin:$PATH
+export PATH=/your-path-to/arm-eabi-4.6/bin:$PATH
 
 export ARCH=arm
 

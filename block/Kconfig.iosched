@@ -98,6 +98,9 @@ choice
 	config DEFAULT_NOOP
 		bool "No-op" if IOSCHED_NOOP=y
 
+	config DEFAULT_ROW
+		bool "ROW" if IOSCHED_ROW=y
+		help
 endchoice
 
 config DEFAULT_IOSCHED
