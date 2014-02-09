@@ -2572,7 +2572,6 @@ config MSM_OCMEM
 
 config MSM_RTB
 	bool "Register tracing"
-	depends on (!METRICO_TP || METRICO_TP!=y)
 	help
 	  Add support for logging different events to a small uncached
 	  region. This is designed to aid in debugging reset cases where the
@@ -2742,12 +2741,6 @@ config MSM_HSIC_SYSMON
 	  over HSIC. This driver allows the local system monitor to
 	  communicate with the remote system monitor interface.
 
-config MSM_HSIC_SYSMON_TTY_DEV
-	tristate "MSM HSIC system monitor TTY device"
-	depends on USB && MSM_HSIC_SYSMON
-	help
-	 Add support for using SYSMON interface for specific purpose
-
 config MSM_HSIC_SYSMON_TEST
 	tristate "MSM HSIC system monitor bridge test"
 	depends on USB && MSM_HSIC_SYSMON && DEBUG_FS
@@ -2817,13 +2810,6 @@ config MACH_M7_WLV
         help
           Support for the HTC APQ8064 M7_WLV.
 
-config MACH_M7_WLJ
-        depends on ARCH_APQ8064
-        bool "APQ8064 M7_WLJ"
-        help
-          Support for the HTC APQ8064 M7_WLJ.
-
-
 config MACH_M7_DCG
         depends on ARCH_APQ8064
         bool "APQ8064 M7_DCG"
@@ -2835,12 +2821,6 @@ config MACH_M7_DUG
         bool "APQ8064 M7_DUG"
         help
           Support for the HTC APQ8064 M7_DUG.
-
-config MACH_M7_EVM
-        depends on ARCH_APQ8064
-        bool "APQ8064 M7_EVM"
-        help
-          Support for the HTC APQ8064 M7_EVM.
 
 config QSC_MODEM
         default n

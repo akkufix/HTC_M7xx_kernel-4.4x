@@ -51,7 +51,6 @@ static dev_t vid_enc_dev_num;
 static struct class *vid_enc_class;
 static long vid_enc_ioctl(struct file *file,
 	unsigned cmd, unsigned long arg);
-static int start_cmd;
 static int stop_cmd;
 
 static s32 vid_enc_get_empty_client_index(void)
@@ -502,7 +501,7 @@ static u32 vid_enc_close_client(struct video_client_ctx *client_ctx)
 
 	mutex_lock(&vid_enc_device_p->lock);
 
-	if (start_cmd && !stop_cmd) {
+	if (!stop_cmd) {
 		vcd_status = vcd_stop(client_ctx->vcd_handle);
 		DBG("Waiting for VCD_STOP: Before Timeout\n");
 		if (!vcd_status) {
@@ -539,7 +538,6 @@ static u32 vid_enc_close_client(struct video_client_ctx *client_ctx)
 		sizeof(struct video_client_ctx));
 
 	vid_enc_device_p->num_clients--;
-	start_cmd = 0;
 	stop_cmd = 0;
 	mutex_unlock(&vid_enc_device_p->lock);
 	return true;
@@ -557,7 +555,6 @@ static int vid_enc_open(struct inode *inode, struct file *file)
 
 	mutex_lock(&vid_enc_device_p->lock);
 	keep_dig_voltage_low_in_idle(true);
-	start_cmd = 0;
 	stop_cmd = 0;
 	client_count = vcd_get_num_of_clients();
 	if (client_count == VIDC_MAX_NUM_CLIENTS) {
@@ -971,7 +968,6 @@ static long vid_enc_ioctl(struct file *file,
 			ERR("setting VEN_IOCTL_CMD_START failed\n");
 			return -EIO;
 		}
-		start_cmd = 1;
 		break;
 	}
 	case VEN_IOCTL_CMD_STOP:

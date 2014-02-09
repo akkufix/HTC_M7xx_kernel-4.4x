@@ -735,7 +735,7 @@ static int __init ssr_init_soc_restart_orders(void)
 		}
 		
 #if defined(CONFIG_ARCH_DUMMY) || defined(CONFIG_ARCH_DUMMY) || defined(CONFIG_ARCH_DUMMY)
-		if (!machine_is_m7_evm()) { 
+		if (!0) { 
 			restart_orders = restart_orders_8064_dsda;
 			n_restart_orders =
 				ARRAY_SIZE(restart_orders_8064_dsda);

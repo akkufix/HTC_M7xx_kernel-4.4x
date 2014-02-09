@@ -922,8 +922,7 @@ static irqreturn_t bma250_irq_handler(int irq, void *handle)
 
     struct slaveirq_dev_data *data = handle;
 
-    if (data)
-        disable_irq_nosync(data->irq);
+    disable_irq_nosync(data->irq);
 
     if (data == NULL)
 	return IRQ_HANDLED;
