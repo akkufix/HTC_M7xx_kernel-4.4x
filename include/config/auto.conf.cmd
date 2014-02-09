@@ -718,6 +718,7 @@ deps_config := \
 	drivers/cpufreq/Kconfig.arm \
 	drivers/cpufreq/Kconfig.x86 \
 	drivers/cpufreq/Kconfig \
+	arch/arm/mvp/Kconfig \
 	mm/Kconfig \
 	kernel/Kconfig.preempt \
 	kernel/time/Kconfig \
